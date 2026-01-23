@@ -4,98 +4,27 @@ A simple PowerShell module for generating QR codes in the terminal.
 
 ## Installation
 
-### Prerequisites
-
-PSQR requires the `qrencode` utility to be installed on your system:
-
-**Ubuntu/Debian:**
-```bash
-sudo apt-get install qrencode
-```
-
-**macOS:**
-```bash
-brew install qrencode
-```
-
-**Windows:**
-```powershell
-# Using Chocolatey
-choco install qrencode
-
-# Or using Scoop
-scoop install qrencode
-```
-
-### Module Installation
-
-#### From Source
-
-1. Clone or download this repository
-2. Import the module:
+Install from the PowerShell Gallery:
 
 ```powershell
-Import-Module ./PSQR/PSQR.psd1
+Install-Module -Name PSQR
 ```
 
-#### Manual Installation
+## Prerequisites
 
-Copy the PSQR folder to one of your PowerShell module paths:
+PSQR requires the `qrencode` utility to be installed on your system.
 
-```powershell
-# View your module paths
-$env:PSModulePath -split ';'
-
-# Copy to user modules directory
-Copy-Item -Path ./PSQR -Destination "$HOME\Documents\PowerShell\Modules\" -Recurse
-
-# Import the module
-Import-Module PSQR
-```
-
-## Quick Start
-
-Generate a QR code from text:
-
-```powershell
-New-PSQR -Text "Hello, World!"
-```
-
-Generate a QR code from a URL:
-
-```powershell
-New-PSQR -Text "https://jakehildreth.com"
-```
-
-Use pipeline input:
-
-```powershell
-"Important message" | New-PSQR
-```
+- **macOS:** `brew install qrencode`
+- **Linux:** `sudo apt-get install qrencode`
+- **Windows:** `scoop install qrencode` or `choco install qrencode`
 
 ## Usage
 
-### New-PSQR
-
-Generates a QR code from a string and displays it in the terminal.
-
-#### Parameters
-
-- **Text** (Mandatory): The text string to encode in the QR code
-  - Accepts pipeline input
-  - Position 0
-
-#### Examples
+Generate a QR code from text or pipeline input:
 
 ```powershell
-# Basic usage
-New-PSQR -Text "https://github.com/jakehildreth"
-
-# From pipeline
-"Scan me!" | New-PSQR
-
-# Verbose output
-New-PSQR -Text "Debug this" -Verbose
+New-PSQR -Text "Hello, World!"
+"https://github.com/jakehildreth" | New-PSQR
 ```
 
 ## Requirements
